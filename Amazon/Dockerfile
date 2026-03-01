@@ -4,7 +4,7 @@ FROM tomcat:10-jdk17
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Copy WAR file
-COPY Amazon-Web/target/*.war /usr/local/tomcat/webapps/ROOT.war
+COPY Amazon-Web/target/*.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
 
