@@ -1,5 +1,11 @@
-FROM eclipse-temurin:17-jdk
-WORKDIR /app
-COPY Amazon-Web/target/*.jar app.jar
+FROM tomcat:10-jdk17
+
+# Remove default webapps
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copy WAR file
+COPY Amazon-Web/target/*.war /usr/local/tomcat/webapps/ROOT.war
+
 EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+
+CMD ["catalina.sh", "run"]
